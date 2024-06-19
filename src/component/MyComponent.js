@@ -18,13 +18,25 @@ class MyComponent extends React.Component {
         this.setState({
             name: 'AAAA'
         })
-
+        //merge state  => react class
         this.setState({
             age: Math.floor((Math.random() * 100) + 1)
         })
     }
     handleOnMoveOver(event) {
         console.log(event.target);
+    }
+
+    handleOnChangeInput = (event) => {
+        this.setState({
+            name: event.target.value
+        })
+        //  console.log(event.target.value);
+    }
+
+    handleOnSubmit = (event) => {
+        event.preventDefault();
+        alert('Submit');
     }
 
     //tập hơp những khối HTML chuyển thành giao diện
@@ -35,9 +47,11 @@ class MyComponent extends React.Component {
                 <h1>My name is {this.state.name}</h1>
                 <h2>I am {this.state.age} years old</h2>
                 <h3>I am living in {this.state.address}</h3>
-                <button onMouseOver={this.handleOnMoveOver}>Click me</button>
                 <button onClick={this.handleClick}>Click me</button>
-
+                <form onSubmit={(event) => this.handleOnSubmit(event)}>
+                    <input type="text" onChange={(event) => this.handleOnChangeInput(event)}></input>
+                    <button type="submit">Submit</button>
+                </form>
             </div>
         );
     }
