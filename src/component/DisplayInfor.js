@@ -1,32 +1,65 @@
 import React from "react";
 class DisplayInfor extends React.Component {
+
+    state = {
+        isShowIsUser: true
+    }
+
+    handleShowHide = () => {
+        this.setState({
+            isShowIsUser: !this.state.isShowIsUser
+        })
+    }
+
     render() {
         //destructuring array/object
         const { listUser } = this.props;
         console.log(listUser);
+        //console.table(listUser);
         //tự động truyền từ cha xuống con thông qua 
         //pops => property
         return (
             <div>
-                {listUser.map((user) => {
-                    return (
-                        <div>
-                            <div>My name's {user.name}</div>
-                            <div>My age's {user.age}</div>
-                            <hr />
-                        </div>
-                    );
-                })
+                <div>
+                    <span onClick={() => { this.handleShowHide() }}>
+                        {this.state.isShowIsUser === true ? "Hide list users." : "Show list users."}
+                    </span>
+                </div>
+                {this.state.isShowIsUser &&
+                    <div>
+                        {listUser.map((user) => {
+
+                            return (
+                                <div key={user.id} className={user.age < 20 ? "red" : "green"}>
+                                    <div>My name's {user.name}</div>
+                                    <div>My age's {user.age}</div>
+                                    <hr />
+                                </div>
+                            );
+
+
+                            // if (user.age < 20) {
+                            //     return (
+                            //         <div key={user.id} className="red">
+                            //             <div>My name's {user.name}</div>
+                            //             <div>My age's {user.age}</div>
+                            //             <hr />
+                            //         </div>
+                            //     );
+                            // } else {
+                            //     return (
+                            //         <div key={user.id} className="green">
+                            //             <div>My name's {user.name}</div>
+                            //             <div>My age's {user.age}</div>
+                            //             <hr />
+                            //         </div>
+                            //     );
+                            // }
+
+                        })
+                        }
+                    </div>
                 }
-                {/* <idv>My name's {name}</idv>
-                <div>My age's {age}</div>
-                <hr />
-                <idv>My name's {name}</idv>
-                <div>My age's {age}</div>
-                <hr />
-                <idv>My name's {name}</idv>
-                <div>My age's {age}</div>
-                <hr /> */}
             </div>
         );
     }

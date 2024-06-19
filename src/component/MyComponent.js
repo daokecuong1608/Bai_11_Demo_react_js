@@ -22,7 +22,7 @@ class MyComponent extends React.Component {
             {
                 id: 3,
                 name: 'thanh',
-                age: 22
+                age: 60
             }
         ]
     }
@@ -37,7 +37,9 @@ class MyComponent extends React.Component {
 
                 <UserInfor />
                 <br></br>
-                <DisplayInfor listUser={this.state.listUser} />
+                <DisplayInfor
+                    listUser={this.state.listUser}
+                />
             </div>
         );
     }
