@@ -3,7 +3,7 @@
 //2. Sử dụng class
 
 import React from "react";
-import UserInfor from "./UserInfor";
+import AddUserInfor from "./AddUserInfor";
 import DisplayInfor from "./DisplayInfor";
 
 class MyComponent extends React.Component {
@@ -27,6 +27,18 @@ class MyComponent extends React.Component {
         ]
     }
 
+    handleAddNewUser = (event) => {
+        this.setState({
+            listUser: [event, ...this.state.listUser]
+        })
+
+        // let listUserClone = this.state.listUser//copy mảng listUser
+        // listUserClone.unshift(event);//thêm phần tử vào mảng
+        // this.setState({
+        //     listUser: listUserClone//cập nhật lại state
+        // })
+    }
+
     //Dry : don't repeat yourself
     //tập hơp những khối HTML chuyển thành giao diện
     //Cú pháp JSX (JavaScript XML) là một phần của React, nó cho phép chúng ta viết HTML trong JavaScript
@@ -35,7 +47,9 @@ class MyComponent extends React.Component {
         return (
             <div>
 
-                <UserInfor />
+                <AddUserInfor
+                    handleAddNewUser={this.handleAddNewUser}
+                />
                 <br></br>
                 <DisplayInfor
                     listUser={this.state.listUser}
