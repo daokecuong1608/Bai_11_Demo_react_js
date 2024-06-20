@@ -43,18 +43,18 @@ class MyComponent extends React.Component {
     //tập hơp những khối HTML chuyển thành giao diện
     //Cú pháp JSX (JavaScript XML) là một phần của React, nó cho phép chúng ta viết HTML trong JavaScript
     render() {
-
         return (
-            <div>
-
-                <AddUserInfor
-                    handleAddNewUser={this.handleAddNewUser}
-                />
-                <br></br>
-                <DisplayInfor
-                    listUser={this.state.listUser}
-                />
-            </div>
+            <>
+                <div>
+                    <AddUserInfor
+                        handleAddNewUser={this.handleAddNewUser}
+                    />
+                    <br></br>
+                    <DisplayInfor
+                        listUser={this.state.listUser}
+                    />
+                </div>
+            </>
         );
     }
 }
