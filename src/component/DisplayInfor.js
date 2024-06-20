@@ -1,7 +1,8 @@
 import React from "react";
 import './DisplayInfor.scss';
+import logo from '../logo.svg';
 class DisplayInfor extends React.Component {
-
+    //State là một đối tượng JavaScript chứa thông tin quan trọng mà một thành phần cần lưu trữ và thay đổi theo thời gian.
     state = {
         isShowIsUser: true
     }
@@ -21,6 +22,7 @@ class DisplayInfor extends React.Component {
         //pops => property
         return (
             <div className='display-infor-container'>
+                <img src={logo} ></img>
                 <div>
                     <span onClick={() => { this.handleShowHide() }}>
                         {this.state.isShowIsUser === true ? "Hide list users." : "Show list users."}
