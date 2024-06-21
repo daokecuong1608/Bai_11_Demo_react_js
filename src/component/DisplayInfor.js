@@ -1,95 +1,110 @@
 import React from "react";
 import './DisplayInfor.scss';
 import logo from '../logo.svg';
-class DisplayInfor extends React.Component {
-    //State là một đối tượng JavaScript chứa thông tin quan trọng mà một thành phần cần lưu trữ và thay đổi theo thời gian.
-    constructor(props) {
-        console.log('constructor : 1');
-        super(props);
-        this.state = {
-            isShowIsUser: true
-        }
-    }
-    componentDidMount() {
-        console.log('componentDidMount');
-        setTimeout(() => {
-            document.title = 'Hello world';
-        }, 3000);
-    }
-    //so sánh sự thay đổi quá khứ với hiện tại
-    componentDidUpdate(prevProp, prevState, snapshot) {
-        console.log('componentDidUpdate', this.props.prevProp);
-        if (this.props.listUser.length === 5) {
-            alert('5 users');
 
-        }
-    }
-    handleShowHide = () => {
-        this.setState({
-            isShowIsUser: !this.state.isShowIsUser
-        })
-    }
+//functional component (stateless component)
 
-    render() {
-        console.log(' call me render ')
-        //destructuring array/object
-        const { listUser } = this.props;
-        //console.table(listUser);
-        //tự động truyền từ cha xuống con thông qua 
-        //pops => property
-        //template + logic + js
-        return (
-            <div className='display-infor-container'>
-                {/* <img src={logo} ></img> */}
+// class DisplayInfor extends React.Component {
+//     //State là một đối tượng JavaScript chứa thông tin quan trọng mà một thành phần cần lưu trữ và thay đổi theo thời gian.
+
+//     render() {
+//         console.log(' call me render ')
+//         //destructuring array/object
+//         const { listUser } = this.props;
+//         //console.table(listUser);
+//         //tự động truyền từ cha xuống con thông qua 
+//         //pops => property
+//         //template + logic + js
+//         return (
+//             <div className='display-infor-container'>
+//                 {/* <img src={logo} ></img> */}
+
+//                 {true &&
+//                     <div>
+//                         {listUser.map((user) => {
+
+//                             return (
+//                                 <div key={user.id} className={user.age < 20 ? "red" : "green"}>
+//                                     <div>
+//                                         <div>My name's {user.name}</div>
+//                                         <div>My age's {user.age}</div>
+//                                     </div>
+//                                     <div>
+//                                         <button onClick={() => this.props.handleDeleteUser(user.id)}>Delete</button>
+//                                     </div>
+
+
+//                                     <hr />
+//                                 </div>
+
+
+
+//                             );
+//                             // if (user.age < 20) {
+//                             //     return (
+//                             //         <div key={user.id} className="red">
+//                             //             <div>My name's {user.name}</div>
+//                             //             <div>My age's {user.age}</div>
+//                             //             <hr />
+//                             //         </div>
+//                             //     );
+//                             // } else {
+//                             //     return (
+//                             //         <div key={user.id} className="green">
+//                             //             <div>My name's {user.name}</div>
+//                             //             <div>My age's {user.age}</div>
+//                             //             <hr />
+//                             //         </div>
+//                             //     );
+//                             // }
+//                         })
+//                         }
+//                     </div>
+//                 }
+//             </div>
+//         );
+//     }
+// }
+
+//class component (stateful component)
+const DisplayInfor = (props) => {
+    const { listUser } = this.props;
+    //destructuring array/object
+    //console.table(listUser);
+    //tự động truyền từ cha xuống con thông qua 
+    //pops => property
+    //template + logic + js
+    return (
+        <div className='display-infor-container'>
+            {/* <img src={logo} ></img> */}
+
+            {true &&
                 <div>
-                    <span onClick={() => { this.handleShowHide() }}>
-                        {this.state.isShowIsUser === true ? "Hide list users." : "Show list users."}
-                    </span>
-                </div>
-                {this.state.isShowIsUser &&
-                    <div>
-                        {listUser.map((user) => {
+                    {listUser.map((user) => {
 
-                            return (
-                                <div key={user.id} className={user.age < 20 ? "red" : "green"}>
-                                    <div>
-                                        <div>My name's {user.name}</div>
-                                        <div>My age's {user.age}</div>
-                                    </div>
-                                    <div>
-                                        <button onClick={() => this.props.handleDeleteUser(user.id)}>Delete</button>
-                                    </div>
-
-
-                                    <hr />
+                        return (
+                            <div key={user.id} className={user.age < 20 ? "red" : "green"}>
+                                <div>
+                                    <div>My name's {user.name}</div>
+                                    <div>My age's {user.age}</div>
+                                </div>
+                                <div>
+                                    <button onClick={() => props.handleDeleteUser(user.id)}>Delete</button>
                                 </div>
 
 
+                                <hr />
+                            </div>
 
-                            );
-                            // if (user.age < 20) {
-                            //     return (
-                            //         <div key={user.id} className="red">
-                            //             <div>My name's {user.name}</div>
-                            //             <div>My age's {user.age}</div>
-                            //             <hr />
-                            //         </div>
-                            //     );
-                            // } else {
-                            //     return (
-                            //         <div key={user.id} className="green">
-                            //             <div>My name's {user.name}</div>
-                            //             <div>My age's {user.age}</div>
-                            //             <hr />
-                            //         </div>
-                            //     );
-                            // }
-                        })
-                        }
-                    </div>
-                }
-            </div>
-        );
-    }
+
+
+                        );
+                    })
+                    }
+                </div>
+            }
+        </div>
+    );
 }
+
 export default DisplayInfor;
