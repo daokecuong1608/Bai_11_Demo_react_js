@@ -3,10 +3,27 @@ import './DisplayInfor.scss';
 import logo from '../logo.svg';
 class DisplayInfor extends React.Component {
     //State là một đối tượng JavaScript chứa thông tin quan trọng mà một thành phần cần lưu trữ và thay đổi theo thời gian.
-    state = {
-        isShowIsUser: true
+    constructor(props) {
+        console.log('constructor : 1');
+        super(props);
+        this.state = {
+            isShowIsUser: true
+        }
     }
+    componentDidMount() {
+        console.log('componentDidMount');
+        setTimeout(() => {
+            document.title = 'Hello world';
+        }, 3000);
+    }
+    //so sánh sự thay đổi quá khứ với hiện tại
+    componentDidUpdate(prevProp, prevState, snapshot) {
+        console.log('componentDidUpdate', this.props.prevProp);
+        if (this.props.listUser.length === 5) {
+            alert('5 users');
 
+        }
+    }
     handleShowHide = () => {
         this.setState({
             isShowIsUser: !this.state.isShowIsUser
@@ -14,9 +31,9 @@ class DisplayInfor extends React.Component {
     }
 
     render() {
+        console.log(' call me render ')
         //destructuring array/object
         const { listUser } = this.props;
-        console.log(listUser);
         //console.table(listUser);
         //tự động truyền từ cha xuống con thông qua 
         //pops => property
