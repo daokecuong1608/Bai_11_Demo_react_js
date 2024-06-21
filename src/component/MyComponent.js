@@ -39,6 +39,15 @@ class MyComponent extends React.Component {
         // })
     }
 
+    handleDeleteUser = (id) => {
+        let listUserClone = this.state.listUser.filter((user) => {
+            return user.id !== id;
+        })
+        this.setState({
+            listUser: listUserClone
+        })
+    }
+
     //Dry : don't repeat yourself
     //tập hơp những khối HTML chuyển thành giao diện
     //Cú pháp JSX (JavaScript XML) là một phần của React, nó cho phép chúng ta viết HTML trong JavaScript
@@ -56,6 +65,7 @@ class MyComponent extends React.Component {
                     <br></br>
                     <DisplayInfor
                         listUser={this.state.listUser}
+                        handleDeleteUser={this.handleDeleteUser}
                     />
                 </div>
             </>

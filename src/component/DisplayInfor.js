@@ -20,9 +20,10 @@ class DisplayInfor extends React.Component {
         //console.table(listUser);
         //tự động truyền từ cha xuống con thông qua 
         //pops => property
+        //template + logic + js
         return (
             <div className='display-infor-container'>
-                <img src={logo} ></img>
+                {/* <img src={logo} ></img> */}
                 <div>
                     <span onClick={() => { this.handleShowHide() }}>
                         {this.state.isShowIsUser === true ? "Hide list users." : "Show list users."}
@@ -34,13 +35,21 @@ class DisplayInfor extends React.Component {
 
                             return (
                                 <div key={user.id} className={user.age < 20 ? "red" : "green"}>
-                                    <div>My name's {user.name}</div>
-                                    <div>My age's {user.age}</div>
+                                    <div>
+                                        <div>My name's {user.name}</div>
+                                        <div>My age's {user.age}</div>
+                                    </div>
+                                    <div>
+                                        <button onClick={() => this.props.handleDeleteUser(user.id)}>Delete</button>
+                                    </div>
+
+
                                     <hr />
                                 </div>
+
+
+
                             );
-
-
                             // if (user.age < 20) {
                             //     return (
                             //         <div key={user.id} className="red">
@@ -58,7 +67,6 @@ class DisplayInfor extends React.Component {
                             //         </div>
                             //     );
                             // }
-
                         })
                         }
                     </div>
