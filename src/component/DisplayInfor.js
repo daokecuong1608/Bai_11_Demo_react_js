@@ -91,7 +91,7 @@ const DisplayInfor = (props) => {
             </div>
             {isShowHideListUser &&
                 <div>
-                    {listUser.map((user) => {
+                    {listUser.forEach((user, index) => {
 
                         return (
                             <div key={user.id} className={user.age < 20 ? "red" : "green"}>
