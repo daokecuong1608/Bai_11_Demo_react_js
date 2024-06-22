@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './DisplayInfor.scss';
 import logo from '../logo.svg';
 
@@ -68,17 +68,28 @@ import logo from '../logo.svg';
 
 //class component (stateful component)
 const DisplayInfor = (props) => {
-    const { listUser } = this.props;
+    const { listUser } = props;
     //destructuring array/object
     //console.table(listUser);
     //tự động truyền từ cha xuống con thông qua 
     //pops => property
     //template + logic + js
+
+    const [isShowHideListUser, setShowHideListUser] = useState(true)
+
+    const handleShowHideListUser = () => {
+        //  alert('click me')
+        setShowHideListUser(!isShowHideListUser)
+    }
     return (
         <div className='display-infor-container'>
             {/* <img src={logo} ></img> */}
-
-            {true &&
+            <div>
+                <span onClick={() => handleShowHideListUser()}>
+                    {(isShowHideListUser === true ? "Hide list user" : "Show list user")}
+                </span>
+            </div>
+            {isShowHideListUser &&
                 <div>
                     {listUser.map((user) => {
 
