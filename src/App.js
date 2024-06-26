@@ -8,18 +8,18 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <Header />
-      <div>
-        test link
+      <div className='header-container'>
+        <Header />
       </div>
-      <div>
-        <button>
-          <Link to="/users">go to User</Link>
-        </button>
-        <button>
-          <Link to="/admins">go to Admin</Link>
-        </button>
+      <div className='mani-container'>
+        <div className='sidenav-container'>
+
+        </div>
+        <div className='app-container'>
+
+        </div>
       </div>
+      <Outlet />
     </div>
 
   );
