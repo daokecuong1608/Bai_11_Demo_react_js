@@ -9,4 +9,21 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.app-container{
+  .header-container{
+    .navbar-nav{
+     .nav-link{
+      color: rgba(10, 9, 9, 0.808);
+      font-size: 1.2em;
+      font-weight: 600;
+      margin: 0 10px;
+      &:hover{
+        color: aqua;
+      }
+     }
+    }
+    // .navbar-nav .nav-link.active{
+    //   color: aqua;
+    // }
+  }
+}
